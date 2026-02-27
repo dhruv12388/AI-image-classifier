@@ -22,7 +22,7 @@ uploaded_file = st.file_uploader("Upload a photo...", type=["jpg", "png", "jpeg"
 
 if uploaded_file:
     image = Image.open(uploaded_file).convert('RGB')
-    st.image(image, caption='Target Image', use_container_width=True)
+    st.image(image, caption='Target Image', use_column_width=True)
     
     # Pre-processing
     img = image.resize((224, 224))
@@ -37,4 +37,5 @@ if uploaded_file:
 
     st.subheader("Results:")
     for i, (id, label, score) in enumerate(decoded):
+
         st.write(f"{i+1}. *{label.title()}* ({score*100:.1f}%)")
